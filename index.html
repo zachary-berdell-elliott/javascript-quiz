@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
     <title>Javascript Quiz</title>
 </head>
 <body>
-    <h1>Javascript Quiz</h1>
-    <h2>Test your skills</h2>
-    <div>Highscore: <span id="highscore-tracker">0</span></div>
-    <div>Time: <span id="timer">--</span></div>
-    <button id="game-starter">Start Game</button>
-    <script type="text/javascipt" src="./assets/script/script.js"></script>
+    <div id="top-display">
+        <div>Highscore: <span id="highscore-tracker">0</span></div>
+        <div>Time: <span id="timer">--</span></div>
+    </div>
+    <div id ="start-screen">
+        <h1>Javascript Quiz</h1>
+        <h2>Test your skills</h2>
+        <button id="starter">Start Game</button>
+    </div>
+    <!--Question div here-->
+    <div id="question-div" class="hide-screen">
+        <h2 id="question-title">Question here</h2>
+    </div>
+    <!--End Screen here-->
+    <script src="./assets/script/script.js"></script>
 </body>
 </html>
