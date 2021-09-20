@@ -1,17 +1,20 @@
-var startGameBtn = document.querySelector("#game-starter");
+var startGameBtn = document.getElementById("#game-starter");
 const qAndAs = {
-    questions = ["How do you change the text of an html element in Javascript?", "Which of these is not a valid declaration type?", "What tag is used to import Javascript into an html document?", "How do you save a value to the local storage of a browser?", "What loop starts with a variable declaration, then a condition to run on, then an iteration advancement."],
-    firstAnswers= ["innerContent", "textContent", "text", "innerText"],
-    secondAnswers = ["var", "int", "const", "let"],
-    thirdAnswers = ["code", "import", "script", "link"],
-    fourthAnswers = ["localContent", "localCache", "sessionStorage", "localStorage"],
-    fifthAnswers = ["for", "while", "for each", "do while"],
+    questions: ["How do you change the text of an html element in Javascript?", "Which of these is not a valid declaration type?", "What tag is used to import Javascript into an html document?", "How do you save a value to the local storage of a browser?", "What loop starts with a variable declaration, then a condition to run on, then an iteration advancement."],
+    firstAnswers: ["innerContent", "textContent", "text", "innerText"],
+    secondAnswers: ["var", "int", "const", "let"],
+    thirdAnswers: ["code", "import", "script", "link"],
+    fourthAnswers: ["localContent", "localCache", "sessionStorage", "localStorage"],
+    fifthAnswers: ["for", "while", "for each", "do while"],
 }
 const timeStart = 40;
 
 //Starts the game when button is clicked
 startGameBtn.addEventListener("click", function () {
+    event.preventDefault();
+    console.log("working");
    // timer();
+    startGameBtn.remove();
     questionPicker(qAndAs.questions[0], qAndAs.firstAnswers, qAndAs.firstAnswers[1]);
 });
 
