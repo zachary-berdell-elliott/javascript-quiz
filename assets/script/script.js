@@ -49,21 +49,33 @@ function startGame() {
 //function for running the questions
 function questionPicker() {
     var displayedQuestion = qAndAs[questionIndex];
+    var optionDiv = document.querySelector("#options");
     questionTitle.textContent = displayedQuestion.question;
     //Adds the question to the top of the page
-    questionTitle.textContent = _question.value;
-    questionForm = document.createElement("form");
+    //questionTitle.textContent = question.value;
 
-    for(let i = 0; i >= qAndAs.options.length-1; i++){
-        document.createElement()
-    }
-
+    /*for(let i = 0; i > displayedQuestion.options.length; i++){
+        var optionBtn = document.createElement("button");
+        optionBtn.setAttribute("value", qAndAs.options[i].value);
+        optionDiv.appendChild(optionBtn);
+    } */
+    displayedQuestion.options.forEach(function(choice, i) {
+        // create new button for each choice
+        var optionBtn = document.createElement("button");
+        optionBtn.setAttribute("class", "choice");
+        optionBtn.setAttribute("value", choice);
+        optionBtn.textContent = i + 1 + ". " + choice;
+        // fire function that checks value
+        optionDiv.appendChild(optionBtn);
+    });
     //deducts time if the user answers the question incorrectly
-    if (userSelection !== _correctAnswer){
+    /*if (userSelection !== _correctAnswer){
         timeLeft -= 20;
-    }
+    } */
 
 
     //Removes the elements displayed to continue to the next question
 }
+//create a function that checks value of each button
+// if statement that checks if this.value === qAndAs[questInex].answer 
 startGameBtn.onclick = startGame;
