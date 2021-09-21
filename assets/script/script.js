@@ -63,11 +63,14 @@ function questionPicker() {
         // create new button for each choice
         var optionBtn = document.createElement("button");
         optionBtn.setAttribute("class", "choice");
-        optionBtn.setAttribute("value", choice);
+        optionBtn.setAttribute("questionValue", choice);
         optionBtn.textContent = i + 1 + ". " + choice;
-        // fire function that checks value
         optionDiv.appendChild(optionBtn);
+        console.log(qAndAs[questionIndex].answer);
+        console.log(this.questionValue)
     });
+
+    valueCheck();
     //deducts time if the user answers the question incorrectly
     /*if (userSelection !== _correctAnswer){
         timeLeft -= 20;
@@ -77,5 +80,11 @@ function questionPicker() {
     //Removes the elements displayed to continue to the next question
 }
 //create a function that checks value of each button
-// if statement that checks if this.value === qAndAs[questInex].answer 
+// if statement that checks if this.value === qAndAs[questInex].answer
+ function valueCheck() {
+     
+    if(this.questionValue !== qAndAs[questionIndex].answer){
+        timeStart -= 20;
+    }
+ }
 startGameBtn.onclick = startGame;
