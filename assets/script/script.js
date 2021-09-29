@@ -5,7 +5,7 @@ const qAndAs = [
     question: "How do you change the text of an html element in Javascript?", 
     options: ["innerContent", "textContent", "text", "innerText"],
     answer: "textContent",
-    }
+    },
 ]
    /* questions: ["How do you change the text of an html element in Javascript?", "Which of these is not a valid declaration type?", "What tag is used to import Javascript into an html document?", "How do you save a value to the local storage of a browser?", "What loop starts with a variable declaration, then a condition to run on, then an iteration advancement."],
     firstAnswers: ["innerContent", "textContent", "text", "innerText"],
@@ -67,10 +67,11 @@ function questionPicker() {
         optionBtn.textContent = i + 1 + ". " + choice;
         optionDiv.appendChild(optionBtn);
         console.log(qAndAs[questionIndex].answer);
-        console.log(this.questionValue)
+        console.log(this.questionValue);
+        valueCheck();
     });
 
-    valueCheck();
+    
     //deducts time if the user answers the question incorrectly
     /*if (userSelection !== _correctAnswer){
         timeLeft -= 20;
@@ -82,8 +83,12 @@ function questionPicker() {
 //create a function that checks value of each button
 // if statement that checks if this.value === qAndAs[questInex].answer
  function valueCheck() {
-     
-    if(this.questionValue !== qAndAs[questionIndex].answer){
+    var userSelection = '';
+    optionBtn.addEventListener("click", function(){
+        userSelection = optionBtn.questionValue;
+        console.log(userSelection);
+    })
+    if (userSelection !== qAndAs[questionIndex].answer){
         timeStart -= 20;
     }
  }
