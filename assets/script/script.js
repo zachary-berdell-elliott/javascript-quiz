@@ -38,6 +38,8 @@ const qAndAs = [
 var timeDisplay = document.querySelector("#timer");
 var questionDiv = document.querySelector("#question-div");
 var questionOptions = document.querySelector("#options");
+var submitBtn = document.querySelector("#submit-score");
+var nameInput = document.querySelector("#name-input");
 var questionIndex = 0;
 var questionTitle = document.querySelector("#question-title");
 var timeState;
@@ -128,4 +130,21 @@ function questionPicker() {
      questionDiv.setAttribute("class", "hide-screen");
      finalScore.textContent = timeStart;
  }
+
+ function saveScore(){
+     var userName = nameInput.value;
+    var savedScores = {
+        name: userName,
+        score: timeStart,
+    }
+    var getHighscores = JSON.parse(localStorage.getItem("saved-scores")) || [];
+    getHighscores.push(savedScores);
+    localStorage.setItem("saved-scores", JSON.stringify(getHighscores));
+ }
+ //Create a show highscore function which gets the savedscors array from local storage the ends up stored in a variable.
+ //Make a for each statement that would create list items that would get inserted into the list of scores. 
+ //Set the text content for the li tags to the intitials and the score
+ //Apply a sort when iterating through the array.
+
 startGameBtn.onclick = startGame;
+submitBtn.onclick = saveScore;
