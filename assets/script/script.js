@@ -41,7 +41,8 @@ var questionOptions = document.querySelector("#options");
 var questionIndex = 0;
 var questionTitle = document.querySelector("#question-title");
 var timeState;
-
+var finalScreen = document.querySelector("#final-screen");
+var finalScore = document.querySelector("#final-score");
 var timeStart = 40;
 
 //Starts the game when button is clicked
@@ -105,7 +106,7 @@ function questionPicker() {
  function valueCheck() {
     if (this.value !== qAndAs[questionIndex].answer){
        timeStart -= 10;
-       console.log("incorrect");
+       console.log("incorrect"); //if have time add feedback
     }
     else{
         console.log("correct");
@@ -122,5 +123,9 @@ function questionPicker() {
 
  function endQuiz(){
      clearInterval(timeState);
+     //Hide questions and unhide end screen
+     finalScreen.removeAttribute("class");
+     questionDiv.setAttribute("class", "hide-screen");
+     finalScore.textContent = timeStart;
  }
 startGameBtn.onclick = startGame;
