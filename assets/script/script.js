@@ -28,13 +28,6 @@ const qAndAs = [
     answer: "for"
     }
 ]
-   /* questions: ["How do you change the text of an html element in Javascript?", "Which of these is not a valid declaration type?", "What tag is used to import Javascript into an html document?", "How do you save a value to the local storage of a browser?", "What loop starts with a variable declaration, then a condition to run on, then an iteration advancement."],
-    firstAnswers: ["innerContent", "textContent", "text", "innerText"],
-    secondAnswers: ["var", "int", "const", "let"],
-    thirdAnswers: ["code", "import", "script", "link"],
-    fourthAnswers: ["localContent", "localCache", "sessionStorage", "localStorage"],
-    fifthAnswers: ["for", "while", "for each", "do while"],
-]*/
 var timeDisplay = document.querySelector("#timer");
 var questionDiv = document.querySelector("#question-div");
 var questionOptions = document.querySelector("#options");
@@ -46,6 +39,7 @@ var timeState;
 var finalScreen = document.querySelector("#final-screen");
 var finalScore = document.querySelector("#final-score");
 var timeStart = 40;
+var highScoreList = document.querySelector("#highscores");
 
 //Starts the game when button is clicked
 /*startGameBtn.addEventListener("click", function (event) {
@@ -60,6 +54,9 @@ function timer() {
    timeState = setInterval(function() {
         timeStart--;
         timeDisplay.textContent = timeStart;
+        if(timeStart == 0){
+            endQuiz();
+        }
     }, 1000);
 }
 
@@ -93,18 +90,8 @@ function questionPicker() {
         optionDiv.appendChild(optionBtn);
         console.log(qAndAs[questionIndex].answer);
     });
-
-    
-    //deducts time if the user answers the question incorrectly
-    /*if (userSelection !== _correctAnswer){
-        timeLeft -= 20;
-    } */
-
-
-    //Removes the elements displayed to continue to the next question
 }
-//create a function that checks value of each button
-// if statement that checks if this.value === qAndAs[questInex].answer
+
  function valueCheck() {
     if (this.value !== qAndAs[questionIndex].answer){
        timeStart -= 10;
@@ -145,6 +132,15 @@ function questionPicker() {
  //Make a for each statement that would create list items that would get inserted into the list of scores. 
  //Set the text content for the li tags to the intitials and the score
  //Apply a sort when iterating through the array.
+
+ function showHighscores() {
+    savedScores.sort(function(a, b){return b-a});
+
+    getHighscores.forEach (i => function(){
+        var highScoreBlock = document.createElement("li").addAttribute("class", "highscore-block").textContent(name + ":" + score);
+        highScoreList.appendChild(highScoreBlock);
+    });
+ }
 
 startGameBtn.onclick = startGame;
 submitBtn.onclick = saveScore;
