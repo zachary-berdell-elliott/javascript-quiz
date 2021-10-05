@@ -41,14 +41,6 @@ var finalScore = document.querySelector("#final-score");
 var timeStart = 40;
 var highScoreList = document.querySelector("#highscores");
 
-//Starts the game when button is clicked
-/*startGameBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-    console.log("working");
-   // timer();
-    questionPicker(qAndAs.questions[0], qAndAs.firstAnswers, qAndAs.firstAnswers[1]);
-}); */
-
 //function for operating the timer
 function timer() {
    timeState = setInterval(function() {
@@ -73,13 +65,7 @@ function questionPicker() {
     optionDiv = document.querySelector("#options");
     questionTitle.textContent = displayedQuestion.question;
     //Adds the question to the top of the page
-    //questionTitle.textContent = question.value;
 
-    /*for(let i = 0; i > displayedQuestion.options.length; i++){
-        var optionBtn = document.createElement("button");
-        optionBtn.setAttribute("value", qAndAs.options[i].value);
-        optionDiv.appendChild(optionBtn);
-    } */
     displayedQuestion.options.forEach(function(choice, i) {
         // create new button for each choice
         var optionBtn = document.createElement("button");
@@ -127,17 +113,18 @@ function questionPicker() {
     var getHighscores = JSON.parse(localStorage.getItem("saved-scores")) || [];
     getHighscores.push(savedScores);
     localStorage.setItem("saved-scores", JSON.stringify(getHighscores));
+    showHighscores(getHighscores);
  }
  //Create a show highscore function which gets the savedscors array from local storage the ends up stored in a variable.
  //Make a for each statement that would create list items that would get inserted into the list of scores. 
  //Set the text content for the li tags to the intitials and the score
  //Apply a sort when iterating through the array.
 
- function showHighscores() {
-    savedScores.sort(function(a, b){return b-a});
+ function showHighscores(getHighscores) {
+    getHighscores.sort((a, b) => b-a);
 
     getHighscores.forEach (i => function(){
-        var highScoreBlock = document.createElement("li").addAttribute("class", "highscore-block").textContent(name + ":" + score);
+        var highScoreBlock = document.createElement("li").addAttribute("class", "highscore-block").textContent(i+1 + ". " + name + ":" + score);
         highScoreList.appendChild(highScoreBlock);
     });
  }
