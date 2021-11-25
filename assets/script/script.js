@@ -39,7 +39,7 @@ var timeState;
 var finalScreen = document.querySelector("#final-screen");
 var finalScore = document.querySelector("#final-score");
 var timeStart = 40;
-var highScoreList = document.querySelector("#highscores");
+var highScoreList = document.getElementById("highscores");
 
 //function for operating the timer
 function timer() {
@@ -122,9 +122,10 @@ function questionPicker() {
 
  function showHighscores(getHighscores) {
     getHighscores.sort((a, b) => b-a);
-
-    getHighscores.forEach (i => function(){
-        var highScoreBlock = document.createElement("li").addAttribute("class", "highscore-block").textContent(i+1 + ". " + name + ":" + score);
+    console.log(getHighscores);
+    getHighscores.forEach (i =>  {
+        console.log("running")
+        var highScoreBlock = document.createElement("li").setAttribute("class", "highscore-block")//.value(i+1 + ". " + getHighscores.name + ":" + getHighscores.score);
         highScoreList.appendChild(highScoreBlock);
     });
  }
