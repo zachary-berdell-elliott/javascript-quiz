@@ -46,7 +46,7 @@ function timer() {
    timeState = setInterval(function() {
         timeStart--;
         timeDisplay.textContent = timeStart;
-        if(timeStart == 0){
+        if(timeStart <= 0){
             endQuiz();
         }
     }, 1000);
@@ -124,8 +124,9 @@ function questionPicker() {
     getHighscores.sort((a, b) => b-a);
     console.log(getHighscores);
     getHighscores.forEach (i =>  {
-        console.log("running")
-        var highScoreBlock = document.createElement("li").setAttribute("class", "highscore-block")//.value(i+1 + ". " + getHighscores.name + ":" + getHighscores.score);
+        console.log("running");
+        console.log(i);
+        var highScoreBlock = document.createElement(`<li class="highscore-block">${i.name}: ${i.score}</li>`);
         highScoreList.appendChild(highScoreBlock);
     });
  }
