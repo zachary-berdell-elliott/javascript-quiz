@@ -121,13 +121,15 @@ function questionPicker() {
  //Apply a sort when iterating through the array.
 
  function showHighscores(getHighscores) {
-    getHighscores.sort((a, b) => b-a);
+    getHighscores = getHighscores.sort((a, b) => b-a);
     console.log(getHighscores);
     getHighscores.forEach (i =>  {
         console.log("running");
         console.log(i);
-        var highScoreBlock = document.createElement(`<li class="highscore-block">${i.name}: ${i.score}</li>`);
-        highScoreList.appendChild(highScoreBlock);
+        var highScoreBlock = document.createElement('li');
+        highScoreBlock.setAttribute('class', 'highscore-block');
+        highScoreBlock.textContent = i.name + ': ' + i.score;
+        document.querySelector('#highscores').appendChild(highScoreBlock);
     });
  }
 
