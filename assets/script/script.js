@@ -47,6 +47,7 @@ function timer() {
         timeStart--;
         timeDisplay.textContent = timeStart;
         if(timeStart <= 0){
+            timeStart = 0;
             endQuiz();
         }
     }, 1000);
@@ -121,7 +122,7 @@ function questionPicker() {
  //Apply a sort when iterating through the array.
 
  function showHighscores(getHighscores) {
-    getHighscores = getHighscores.sort((a, b) => b-a);
+    getHighscores.sort((a, b) => b.score-a.score);
     console.log(getHighscores);
     getHighscores.forEach (i =>  {
         console.log("running");
