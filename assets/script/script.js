@@ -40,7 +40,8 @@ var finalScreen = document.querySelector("#final-screen");
 var finalScore = document.querySelector("#final-score");
 var timeStart = 40;
 var highScoreList = document.getElementById("highscores");
-var mainMenuBtn = document.querySelector('#main-menu-btn');
+var mainMenuLink = document.querySelector('#main-menu-link');
+var clearBtn = document.querySelector("#clear-scores");
 
 //function for operating the timer
 function timer() {
@@ -119,7 +120,8 @@ function questionPicker() {
     localStorage.setItem("saved-scores", JSON.stringify(getHighscores));
     showHighscores(getHighscores);
     submitBtn.setAttribute('class', 'hide-screen');
-    mainMenuBtn.removeAttribute('class');
+    mainMenuLink.removeAttribute('class');
+    clearBtn.removeAttribute('class')
  }
  //Create a show highscore function which gets the savedscors array from local storage the ends up stored in a variable.
  //Make a for each statement that would create list items that would get inserted into the list of scores. 
@@ -139,12 +141,11 @@ function questionPicker() {
     });
  }
 
- function menuReturn() {
-    finalScreen.setAttribute("class", "hide-screen");
-    mainMenuBtn.setAttribute('class', 'hide-screen');
-    startScreen.removeAttribute('class');
+ function clearScores(){
+    localStorage.setItem("saved-scores", null);
+    highScoreList.textContent = '';
  }
 
 startGameBtn.onclick = startGame;
 submitBtn.onclick = saveScore;
-mainMenuBtn.onclick = menuReturn;
+clearBtn.onclick = clearScores;

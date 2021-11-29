@@ -7,6 +7,23 @@
     <title>Quiz Scores</title>
 </head>
 <body>
-    
+    <h1>Highscores</h1>
+    <ol id="highscores"></ol>
+    <script>
+     function showHighscores(getHighscores) {
+    getHighscores.sort((a, b) => b.score-a.score);
+    console.log(getHighscores);
+    getHighscores.forEach (i =>  {
+        console.log("running");
+        console.log(i);
+        var highScoreBlock = document.createElement('li');
+        highScoreBlock.setAttribute('class', 'highscore-block');
+        highScoreBlock.textContent = i.name + ': ' + i.score;
+        document.querySelector('#highscores').appendChild(highScoreBlock);
+    });
+ }
+    var highscore = JSON.parse(localStorage.getItem("saved-scores")) || [];
+    showHighscores(highscore);
+    </script>
 </body>
 </html>
