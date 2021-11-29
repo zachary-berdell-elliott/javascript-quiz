@@ -20,7 +20,7 @@ The user will be prompted to enter there name at the end of the quiz. The users 
 The questions are cycled and the user is presented with buttons that they can click. The buttons are presented in a multiple choice format.
 ![Picture of a question](./assets/images/question.png)
 
-## Score clearing
+### Score clearing
 The user can clear the scores by clicking a clear scores button that will then remove the scores from the local storage.
 
 ## License
