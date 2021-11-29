@@ -42,6 +42,10 @@ var timeStart = 40;
 var highScoreList = document.getElementById("highscores");
 var mainMenuLink = document.querySelector('#main-menu-link');
 var clearBtn = document.querySelector("#clear-scores");
+var highScore = document.querySelector('#highscore-tracker');
+var getHighscores = JSON.parse(localStorage.getItem("saved-scores")) || [];
+getHighscores.sort((a, b) => b.score-a.score);
+highScore.textContent = getHighscores[0].score || 0;
 
 //function for operating the timer
 function timer() {
@@ -115,7 +119,6 @@ function questionPicker() {
         name: userName,
         score: timeStart,
     }
-    var getHighscores = JSON.parse(localStorage.getItem("saved-scores")) || [];
     getHighscores.push(savedScores);
     localStorage.setItem("saved-scores", JSON.stringify(getHighscores));
     showHighscores(getHighscores);
@@ -123,10 +126,6 @@ function questionPicker() {
     mainMenuLink.removeAttribute('class');
     clearBtn.removeAttribute('class')
  }
- //Create a show highscore function which gets the savedscors array from local storage the ends up stored in a variable.
- //Make a for each statement that would create list items that would get inserted into the list of scores. 
- //Set the text content for the li tags to the intitials and the score
- //Apply a sort when iterating through the array.
 
  function showHighscores(getHighscores) {
     getHighscores.sort((a, b) => b.score-a.score);
