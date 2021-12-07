@@ -148,6 +148,6 @@ function questionPicker() {
     highScoreList.textContent = '';
  }
 
-startGameBtn.addEventListener('click', startGame);
-submitBtn.addEventListener('click', saveScore);
-clearBtn.addEventListener('click', clearScores);
+startGameBtn.onclick = startGame;
+submitBtn.onclick = saveScore;
+clearBtn.onclick = clearScores;
