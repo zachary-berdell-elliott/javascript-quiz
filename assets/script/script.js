@@ -44,12 +44,15 @@ var mainMenuLink = document.querySelector('#main-menu-link');
 var clearBtn = document.querySelector("#clear-scores");
 var highScore = document.querySelector('#highscore-tracker');
 var getHighscores = JSON.parse(localStorage.getItem("saved-scores")) || [];
-getHighscores.sort((a, b) => b.score-a.score);
-highScore.textContent = getHighscores[0].score || 0;
+console.log(getHighscores);
+
+if(getHighscores.length > 0){
+    getHighscores.sort((a, b) => b.score-a.score);
+    highScore.textContent = getHighscores[0].score;
+}
 
 //function for operating the timer
 function timer() {
-    timeStart = 40;
    timeState = setInterval(function() {
         timeStart--;
         timeDisplay.textContent = timeStart;
@@ -127,7 +130,7 @@ function questionPicker() {
     clearBtn.removeAttribute('class')
  }
 
- function showHighscores(getHighscores) {
+ function showHighscores() {
     getHighscores.sort((a, b) => b.score-a.score);
     console.log(getHighscores);
     getHighscores.forEach (i =>  {
@@ -145,6 +148,6 @@ function questionPicker() {
     highScoreList.textContent = '';
  }
 
-startGameBtn.onclick = startGame;
-submitBtn.onclick = saveScore;
-clearBtn.onclick = clearScores;
+startGameBtn.addEventListener('click', startGame);
+submitBtn.addEventListener('click', saveScore);
+clearBtn.addEventListener('click', clearScores);
